@@ -37,21 +37,30 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
+    identifier = "schedule"
+    name = "Schedule"
+    url = "/schedule/"
+    
+    pre = ""
+
+    weight = 4
+
+  [[menu.main]]
     identifier = "team"
     name = "Team"
     url = "/team/"
-    weight = 4
+    weight = 5
     
   [[menu.main]]
     identifier = "github"
     url = "https://github.com/rjrobsonjunior/BioimpedanceScale_OF2"
-    weight = 5
+    weight = 6
     
     pre = "<span data-feather='github'></span>"
 
 [params]
   # URL for the avatar on homepage
-  avatarURL = ""
+  avatarURL = "/images/coconut.webp"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
   avatarSize = ""

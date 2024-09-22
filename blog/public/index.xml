@@ -6,8 +6,22 @@
     <description>Recent content on Bioimpedance Scale Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Sep 2024 23:21:35 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 22 Sep 2024 01:19:57 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Schedule</title>
+      <link>http://localhost:1313/schedule/</link>
+      <pubDate>Sun, 22 Sep 2024 01:19:57 -0300</pubDate>
+      <guid>http://localhost:1313/schedule/</guid>
+      <description>&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Add schedule&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Project</title>
+      <link>http://localhost:1313/project/</link>
+      <pubDate>Sun, 22 Sep 2024 01:02:39 -0300</pubDate>
+      <guid>http://localhost:1313/project/</guid>
+      <description>&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Brief description of project&lt;/li&gt;&#xA;&lt;li&gt;Requirements&lt;/li&gt;&#xA;&lt;li&gt;Required reports&lt;/li&gt;&#xA;&lt;li&gt;etc&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Team</title>
       <link>http://localhost:1313/team/</link>
