@@ -63,7 +63,7 @@ enableRobotsTXT = true
   avatarURL = "/images/coconut.webp"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
-  avatarSize = ""
+  avatarSize = "size-l"
 
   # Description to display on homepage
   description = "Check your health from the comfort of your phone"
