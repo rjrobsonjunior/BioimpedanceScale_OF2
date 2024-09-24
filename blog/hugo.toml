@@ -1,4 +1,5 @@
 baseURL = "https://rjrobsonjunior.github.io/BioimpedanceScale_OF2"
+canonifyURLs = true
 defaultContentLanguage = "en"
 languageCode = "en"
 
