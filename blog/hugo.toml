@@ -1,4 +1,5 @@
 baseURL = "https://rjrobsonjunior.github.io"
+relativeURLs = true
 defaultContentLanguage = "en"
 languageCode = "en"
 
@@ -60,7 +61,7 @@ enableRobotsTXT = true
 
 [params]
   # URL for the avatar on homepage
-  avatarURL = "/images/coconut.webp"
+  avatarURL = "images/coconut.webp"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
   avatarSize = "size-l"
