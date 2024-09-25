@@ -59,7 +59,6 @@ enableRobotsTXT = true
     pre = "<span data-feather='github'></span>"
 
 [params]
-  staticPath = "/BioimpedanceScale_OF2"
   # URL for the avatar on homepage
   avatarURL = "images/coconut.webp"
 
