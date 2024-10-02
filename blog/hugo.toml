@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://bioimpedance-scale.vercel.app/"
 defaultContentLanguage = "en"
 languageCode = "en"
 
