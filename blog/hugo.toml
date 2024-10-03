@@ -4,7 +4,7 @@ languageCode = "en"
 
 title = "Bioimpedance Scale Blog"
 
-theme = ["gokarna","shortcodes"]
+theme = ["gokarna"]
 
 enableRobotsTXT = true
 
