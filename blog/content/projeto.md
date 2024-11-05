@@ -5,12 +5,9 @@ date = 2024-09-22T01:02:39-03:00
 draft = false
 +++
 
-# TODO
-- [ ] Breve descrição do projeto
-
-
 # Overview
 O projeto consiste em uma balança de bioimpedância ...
+TODO: finish me
 
 
 ## Proposta

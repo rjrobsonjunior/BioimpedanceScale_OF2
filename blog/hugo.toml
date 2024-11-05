@@ -2,7 +2,7 @@ baseURL = "https://bioimpedance-scale.vercel.app/"
 defaultContentLanguage = "en"
 languageCode = "en"
 
-title = "Bioimpedance Scale Blog"
+title = "Balança de Bioimpedância"
 
 theme = ["gokarna"]
 
@@ -57,7 +57,7 @@ enableRobotsTXT = true
   avatarSize = "size-l"
 
   # Description to display on homepage
-  description = "Check your health from the comfort of your phone"
+  description = "TODO: change me"
 
   # Accent color is displayed when you hover over <a> tags
   accentColor = "#FF4D4D"
