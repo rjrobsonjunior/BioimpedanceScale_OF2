@@ -37,15 +37,6 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
-    identifier = "cronograma"
-    name = "Cronograma"
-    url = "/cronograma/"
-    
-    pre = ""
-
-    weight = 4
-
-  [[menu.main]]
     identifier = "equipe"
     name = "Equipe"
     url = "/equipe/"
