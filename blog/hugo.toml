@@ -19,9 +19,9 @@ enableRobotsTXT = true
     weight = 1
 
   [[menu.main]]
-    identifier = "project"
-    name = "Project"
-    url = "/project/"
+    identifier = "projeto"
+    name = "Projeto"
+    url = "/projeto/"
     
     pre = ""
 
@@ -37,18 +37,18 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
-    identifier = "schedule"
-    name = "Schedule"
-    url = "/schedule/"
+    identifier = "cronograma"
+    name = "Cronograma"
+    url = "/cronograma/"
     
     pre = ""
 
     weight = 4
 
   [[menu.main]]
-    identifier = "team"
-    name = "Team"
-    url = "/team/"
+    identifier = "equipe"
+    name = "Equipe"
+    url = "/equipe/"
     weight = 5
     
   [[menu.main]]
