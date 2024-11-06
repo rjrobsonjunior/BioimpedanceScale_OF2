@@ -10,7 +10,7 @@ O projeto consiste em uma balança de bioimpedância. Ela será capaz de medir a
 
 
 ## Proposta
-A balança fará uso de um ESP32 e o CI AD5933.
+A balança fará uso de um ESP32 e o circuito integrado AD5933.
 Além disso, haverá um aplicativo de celular com o qual a balança irá se conectar.
 O aplicativo será escrito em React Native, e incorporará um banco de dados SQLite.
 

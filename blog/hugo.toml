@@ -76,3 +76,5 @@ enableRobotsTXT = true
   # "popular" (order posts by weight), "recent" (order posts by date)
   # or "" (do not display, default option)
   showPostsOnHomePage = ""
+
+  footer = ""
