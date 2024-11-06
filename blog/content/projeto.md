@@ -6,11 +6,13 @@ draft = false
 +++
 
 # Overview
-O projeto consiste em uma balança de bioimpedância ...
-TODO: finish me
+O projeto consiste em uma balança de bioimpedância. Ela será capaz de medir a gordura corporal, massa magra e massa de água do corpo. 
 
 
 ## Proposta
+A balança fará uso de um ESP32 e o CI AD5933.
+Além disso, haverá um aplicativo de celular com o qual a balança irá se conectar.
+O aplicativo será escrito em React Native, e incorporará um banco de dados SQLite.
 
 ### Requisitos
 #### Requisitos Funcionais
@@ -45,5 +47,5 @@ A proposta completa do projeto pode ser encontrada [aqui](/proposta.pdf).
 
 
 # Cronograma
-O cronograma pode ser encontrado [aqui]().
+O cronograma pode ser encontrado [aqui](https://docs.google.com/spreadsheets/d/1uDyi9QAd5F_Qd_09Ph9dPdHUsxXU9gyrMMj6czyDvkA/edit?gid=0#gid=0).
 

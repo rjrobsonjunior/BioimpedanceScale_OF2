@@ -51,13 +51,13 @@ enableRobotsTXT = true
 
 [params]
   # URL for the avatar on homepage
-  avatarURL = "/images/coconut.webp"
+  avatarURL = "/images/scale-logo.webp"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
   avatarSize = "size-l"
 
   # Description to display on homepage
-  description = "TODO: change me"
+  description = "Confira sua saúde do conforto do seu celular"
 
   # Accent color is displayed when you hover over <a> tags
   accentColor = "#FF4D4D"

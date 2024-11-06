@@ -2,7 +2,7 @@
 title = 'Base Post'
 type = 'post'
 date = 2024-09-22T01:38:28-03:00
-draft = false
+draft = true
 +++
 
 This is the base of a post for future reference.
