@@ -13,14 +13,14 @@ class Storage {
 
     // TODO: look up how to handle this properly
     public async getUsers(): Promise<User[] | undefined> {
-        const result = await this.db.getAllAsync<{ users: User }>(`
-            SELECT id_user, first_name, last_name, height, sex FROM user;
+        const result = await this.db.getAllAsync<User>(`
+            SELECT id_user, first_name, last_name, height, sex, date_of_birth FROM user;
         `);
-        return result?.users;
+        return result;
     }
 
-    public async getCurrentUserId(): Promise<Number | undefined> {
-        const result = await this.db.getFirstAsync<{ userId: Number }>(`
+    public async getCurrentUserId(): Promise<number | undefined> {
+        const result = await this.db.getFirstAsync<{ userId: number }>(`
             SELECT id_user as userId FROM current_user;
         `)
         return result?.userId;
@@ -33,7 +33,8 @@ class Storage {
                 first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL,
                 height DECIMAL(3,2) NOT NULL,
-                sex INTEGER NOT NULL
+                sex INTEGER NOT NULL,
+                date_of_birth DATE NOT NULL
             );
 
             CREATE TABLE IF NOT EXISTS bia (

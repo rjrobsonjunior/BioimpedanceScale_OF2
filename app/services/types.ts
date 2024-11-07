@@ -4,19 +4,20 @@ export enum Sex {
 }
 
 export type User = {
-    id: Number;
-    firstName: String;
-    lastName: String;
-    height: Number;
-    sex: String;
+    id: number;
+    firstName: string;
+    lastName: string;
+    height: number;
+    sex: string;
+    dateOfBirth: number; // TODO find out best solution for this
 }
 
 export type BIA = {
-    id: Number;
-    userId: Number;
-    timestamp: Number; // TODO find out best solution for this
-    weight: Number;
-    muscle_mass: Number;
-    fat_mass: Number;
-    water_mass: Number;
+    id: number;
+    userId: number;
+    timestamp: number; // TODO find out best solution for this
+    weight: number;
+    muscle_mass: number;
+    fat_mass: number;
+    water_mass: number;
 }
