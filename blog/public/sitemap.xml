@@ -2,26 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/base-post/</loc>
+    <loc>https://scale-blog.vercel.app/</loc>
     <lastmod>2024-09-22T01:38:28-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://scale-blog.vercel.app/posts/blog/</loc>
     <lastmod>2024-09-22T01:38:28-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://scale-blog.vercel.app/posts/</loc>
     <lastmod>2024-09-22T01:38:28-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/schedule/</loc>
-    <lastmod>2024-09-22T01:19:57-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/project/</loc>
+    <loc>https://scale-blog.vercel.app/projeto/</loc>
     <lastmod>2024-09-22T01:02:39-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/team/</loc>
+    <loc>https://scale-blog.vercel.app/equipe/</loc>
     <lastmod>2024-09-17T23:21:35-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://scale-blog.vercel.app/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://scale-blog.vercel.app/tags/</loc>
   </url>
 </urlset>

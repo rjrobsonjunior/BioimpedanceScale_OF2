@@ -1,10 +1,10 @@
-baseURL = "https://rjrobsonjunior.github.io/BioimpedanceScale_OF2"
+baseURL = "https://bioimpedance-scale.vercel.app/"
 defaultContentLanguage = "en"
 languageCode = "en"
 
-title = "Bioimpedance Scale Blog"
+title = "Balança de Bioimpedância"
 
-theme = ["gokarna","shortcodes"]
+theme = ["gokarna"]
 
 enableRobotsTXT = true
 
@@ -19,9 +19,9 @@ enableRobotsTXT = true
     weight = 1
 
   [[menu.main]]
-    identifier = "project"
-    name = "Project"
-    url = "/project/"
+    identifier = "projeto"
+    name = "Projeto"
+    url = "/projeto/"
     
     pre = ""
 
@@ -37,18 +37,9 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
-    identifier = "schedule"
-    name = "Schedule"
-    url = "/schedule/"
-    
-    pre = ""
-
-    weight = 4
-
-  [[menu.main]]
-    identifier = "team"
-    name = "Team"
-    url = "/team/"
+    identifier = "equipe"
+    name = "Equipe"
+    url = "/equipe/"
     weight = 5
     
   [[menu.main]]
@@ -60,13 +51,13 @@ enableRobotsTXT = true
 
 [params]
   # URL for the avatar on homepage
-  avatarURL = "images/coconut.webp"
+  avatarURL = "/images/scale-logo.webp"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
   avatarSize = "size-l"
 
   # Description to display on homepage
-  description = "Check your health from the comfort of your phone"
+  description = "Confira sua saúde do conforto do seu celular"
 
   # Accent color is displayed when you hover over <a> tags
   accentColor = "#FF4D4D"
@@ -85,3 +76,5 @@ enableRobotsTXT = true
   # "popular" (order posts by weight), "recent" (order posts by date)
   # or "" (do not display, default option)
   showPostsOnHomePage = ""
+
+  footer = ""
