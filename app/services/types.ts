@@ -8,8 +8,8 @@ export type User = {
     firstName: string;
     lastName: string;
     height: number;
-    sex: string;
-    dateOfBirth: number; // TODO find out best solution for this
+    sex: number;
+    dateOfBirth: string; // TODO find out best solution for this
 }
 
 export type BIA = {
