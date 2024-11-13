@@ -4,11 +4,11 @@ export enum Sex {
 }
 
 export type User = {
-    id: number;
+    id: number | undefined;
     firstName: string;
     lastName: string;
     height: number;
-    sex: number;
+    sex: Sex.MALE | Sex.FEMALE;
     dateOfBirth: string; // TODO find out best solution for this
 }
 

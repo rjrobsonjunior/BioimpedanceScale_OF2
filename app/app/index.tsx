@@ -1,10 +1,13 @@
-import { Button, Text, View, TextInput } from "react-native";
 import { Storage, loadDatabase } from "../services/storage"
 import { User, Sex } from "../services/types"
+import UserTestComponent from "../components/TestComponent"
+import CreateUser from "../components/CreateUser"
+
+import { Button, Text, View, TextInput } from "react-native";
 import { useState, useEffect } from "react";
 
-const db = new Storage();
 const murilo: User = {
+    id: undefined,
     firstName: 'Murilo',
     lastName: 'Unten',
     height: 170,
@@ -12,23 +15,21 @@ const murilo: User = {
     dateOfBirth: '29/01/2004',
 }
 
-
 export default function Index() {
-    const [databaseLoaded, setDatabaseLoaded] = useState<boolean>(false);
     const [users, setUsers] = useState<User[]>([]);
     const [firstName, onChangeFirstName] = useState<string>("");
     const [lastName, onChangeLastName] = useState<string>("");
+    const [db, setDB] = useState<Storage>();
 
     useEffect(() => {
-        loadDatabase()
-            .then(() => {
-                setDatabaseLoaded(true);
+        loadDatabase(false)
+            .then((storage: Storage) => {
+                setDB(storage)
             })
             .catch((e) => console.error(e));
     }, []);
 
-
-    if (!databaseLoaded) {
+    if (!db) {
         return (
             <View
                 style={{
@@ -53,9 +54,9 @@ export default function Index() {
             <Text>Database loaded</Text>
             <Button title="Get Users" onPress={ async () => setUsers(await db.getUsers()) }/>
 
-            <TextInput value={ firstName } onChangeText={ text => onChangeFirstName(text) } placeholder="First name"/>
-            <TextInput value={ lastName } onChangeText={ text => onChangeLastName(text) } placeholder="Last name"/>
-            <Button title="Create User" onPress={ async () => await db.createUser(murilo) }/>
+            <CreateUser />
+
+            <UserTestComponent user={ murilo }></UserTestComponent>
         </View>
     );
 }

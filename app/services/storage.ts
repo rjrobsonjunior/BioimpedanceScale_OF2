@@ -8,11 +8,11 @@ const DB_NAME: string = "sqlite.db";
 
 export class Storage {
     private db: SQLite.SQLiteDatabase;
+    private dbName: string;
 
-    public constructor() {
-        console.log("inside constructor");
-        
-        this.db = SQLite.openDatabaseSync(DB_NAME);
+    public constructor(dbName: string) {
+        this.dbName = dbName;
+        this.db = SQLite.openDatabaseSync(this.dbName);
         this.setup();
     }
 
@@ -43,21 +43,20 @@ export class Storage {
         return user;
     }
 
-    // TODO: look up how to handle this properly
     public async getUsers(): Promise<User[]> {
         const result = await this.db.getAllAsync(`
             SELECT id_user, first_name, last_name, height, sex, date_of_birth FROM user;
         `);
         result.forEach((user: any) => console.log(user.first_name))
 
-        return result.map<User>((userData: any) => {
+        return result.map<User>((u: any) => {
             const user: User = {
-                id: userData.id,
-                firstName: userData.first_name,
-                lastName: userData.last_name,
-                height: userData.height,
-                sex: userData.sex,
-                dateOfBirth: userData.dateOfBirth,
+                id: u.id,
+                firstName: u.first_name,
+                lastName: u.last_name,
+                height: u.height,
+                sex: u.sex,
+                dateOfBirth: u.dateOfBirth,
             };
             return user;
         });
@@ -70,8 +69,7 @@ export class Storage {
         return result?.userId;
     }
 
-    public setup() {
-        console.log("inside setup");
+    public setup(): number {
         const result = this.db.runSync(`
             CREATE TABLE IF NOT EXISTS user (
                 id_user INTEGER PRIMARY KEY NOT NULL,
@@ -98,56 +96,34 @@ export class Storage {
                 FOREIGN KEY (id_user) REFERENCES user (id_user)
             );
         `);
-        console.log(`rows affected: ${result.changes}`);
-        // this.db.execSync(`
-        //     CREATE TABLE IF NOT EXISTS user (
-        //         id_user INTEGER PRIMARY KEY NOT NULL,
-        //         first_name TEXT NOT NULL,
-        //         last_name TEXT NOT NULL,
-        //         height DECIMAL(3,2) NOT NULL,
-        //         sex INTEGER NOT NULL,
-        //         date_of_birth DATE NOT NULL
-        //     );
-        //
-        //     CREATE TABLE IF NOT EXISTS bia (
-        //         id_bia INTEGER PRIMARY KEY NOT NULL,
-        //         id_user INTEGER NOT NULL,
-        //         timestamp DATETIME NOT NULL,
-        //         weight FLOAT NOT NULL,
-        //         muscle_mass FLOAT NOT NULL,
-        //         fat_mass FLOAT NOT NULL,
-        //         water_mass FLOAT NOT NULL,
-        //         FOREIGN KEY (id_user) REFERENCES user (id_user)
-        //     );
-        //
-        //     CREATE TABLE IF NOT EXISTS current_user (
-        //         id_user NOT NULL,
-        //         FOREIGN KEY (id_user) REFERENCES user (id_user)
-        //     );
-        // `);
+        return result.changes;
     }
 }
 
-
-export const loadDatabase = async () => {
-        const dbName: string = "sqlite.db";
-        const dbAsset = require(`../assets/${dbName}`);
+export async function loadDatabase(resetOldDB: boolean): Promise<Storage> {
+        const dbName: string = DB_NAME;
+        const dbAsset = require(`../assets/database/${dbName}`);
         const dbUri = Asset.fromModule(dbAsset).uri;
-        const dbFilePath = `${FileSystem.documentDirectory}database/${dbName}`;
-        console.log(dbFilePath);
+        const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
 
-        const fileInfo = await FileSystem.getInfoAsync(dbFilePath);
-        if (fileInfo.exists) {
+        if(resetOldDB && (await databaseExists(dbName))) {
+            console.log("deleting old database");
             await FileSystem.deleteAsync(dbFilePath);
-            FileSystem.readDirectoryAsync
         }
-        // if (!fileInfo.exists) {
-        //     await FileSystem.makeDirectoryAsync(
-        //         `${FileSystem.documentDirectory}database`,
-        //         { intermediates: true }
-        //     );
-        //     await FileSystem.downloadAsync(dbUri, dbFilePath);
-        // }
+        else if (!(await databaseExists(dbName))) {
+            await FileSystem.makeDirectoryAsync(
+                `${FileSystem.documentDirectory}SQLite`,
+                { intermediates: true }
+            );
+            
+            await FileSystem.downloadAsync(dbUri, dbFilePath);
+        }
 
-    return;
+    return new Storage(dbName);
+}
+
+async function databaseExists(dbName: string): Promise<boolean> {
+    const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
+    const fileInfo = await FileSystem.getInfoAsync(dbFilePath);
+    return fileInfo.exists;
 }
