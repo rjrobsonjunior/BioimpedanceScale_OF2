@@ -1,4 +1,6 @@
+import { Storage } from  "@/services/storage"
 import { User, Sex } from "@/services/types";
+
 import { View, Text } from "react-native";
 
 type UserProp = {
@@ -6,6 +8,11 @@ type UserProp = {
 }
 
 const UserTestComponent = (props: UserProp) => {
+    let db: Storage;
+    Storage.getInstance(false)
+        .then((result) => {
+            db = result;
+        });
     
     return (
         <View

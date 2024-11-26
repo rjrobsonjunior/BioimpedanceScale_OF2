@@ -7,16 +7,26 @@ import { User } from "./types";
 const DB_NAME: string = "sqlite.db";
 
 export class Storage {
+    static #instance: Storage;
     private db: SQLite.SQLiteDatabase;
     private dbName: string;
 
-    public constructor(dbName: string) {
-        this.dbName = dbName;
+    public static async getInstance(resetOldDB: boolean): Promise<Storage> {
+        if (!Storage.#instance) {
+            Storage.#instance = await Storage.loadDatabase(resetOldDB);
+        }
+
+        return Storage.#instance;
+    }
+
+    private constructor() {
+        this.dbName = DB_NAME;
         this.db = SQLite.openDatabaseSync(this.dbName);
-        this.setup();
+        this.setupTables();
     }
 
     public async createUser(user: User) {
+        console.log("inside createUser. User: ", user);
         const query = await this.db.prepareAsync(`
             INSERT INTO user (first_name, last_name, height, sex, date_of_birth) values (?, ?, ?, ?, ?);
         `);
@@ -47,6 +57,7 @@ export class Storage {
         const result = await this.db.getAllAsync(`
             SELECT id_user, first_name, last_name, height, sex, date_of_birth FROM user;
         `);
+        console.log("here lol");
         result.forEach((user: any) => console.log(user.first_name))
 
         return result.map<User>((u: any) => {
@@ -69,7 +80,7 @@ export class Storage {
         return result?.userId;
     }
 
-    public setup(): number {
+    public setupTables(): number {
         const result = this.db.runSync(`
             CREATE TABLE IF NOT EXISTS user (
                 id_user INTEGER PRIMARY KEY NOT NULL,
@@ -98,32 +109,32 @@ export class Storage {
         `);
         return result.changes;
     }
-}
 
-export async function loadDatabase(resetOldDB: boolean): Promise<Storage> {
-        const dbName: string = DB_NAME;
-        const dbAsset = require(`../assets/database/${dbName}`);
-        const dbUri = Asset.fromModule(dbAsset).uri;
+    private static async loadDatabase(resetOldDB: boolean): Promise<Storage> {
+            const dbName: string = DB_NAME;
+            const dbAsset = require(`../assets/database/${dbName}`);
+            const dbUri = Asset.fromModule(dbAsset).uri;
+            const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
+
+            if(resetOldDB && (await Storage.databaseExists(dbName))) {
+                console.log("deleting old database");
+                await FileSystem.deleteAsync(dbFilePath);
+            }
+            else if (!(await Storage.databaseExists(dbName))) {
+                await FileSystem.makeDirectoryAsync(
+                    `${FileSystem.documentDirectory}SQLite`,
+                    { intermediates: true }
+                );
+                
+                await FileSystem.downloadAsync(dbUri, dbFilePath);
+            }
+
+        return new Storage();
+    }
+
+    static async databaseExists(dbName: string): Promise<boolean> {
         const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
-
-        if(resetOldDB && (await databaseExists(dbName))) {
-            console.log("deleting old database");
-            await FileSystem.deleteAsync(dbFilePath);
-        }
-        else if (!(await databaseExists(dbName))) {
-            await FileSystem.makeDirectoryAsync(
-                `${FileSystem.documentDirectory}SQLite`,
-                { intermediates: true }
-            );
-            
-            await FileSystem.downloadAsync(dbUri, dbFilePath);
-        }
-
-    return new Storage(dbName);
-}
-
-async function databaseExists(dbName: string): Promise<boolean> {
-    const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
-    const fileInfo = await FileSystem.getInfoAsync(dbFilePath);
-    return fileInfo.exists;
+        const fileInfo = await FileSystem.getInfoAsync(dbFilePath);
+        return fileInfo.exists;
+    }
 }

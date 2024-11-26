@@ -1,62 +1,74 @@
-import { Storage, loadDatabase } from "../services/storage"
-import { User, Sex } from "../services/types"
+import { Storage } from "../services/storage"
+import { User } from "../services/types"
 import UserTestComponent from "../components/TestComponent"
 import CreateUser from "../components/CreateUser"
 
-import { Button, Text, View, TextInput } from "react-native";
-import { useState, useEffect } from "react";
+import { Button, Text, View, ScrollView } from "react-native";
+import { useState } from "react";
 
-const murilo: User = {
-    id: undefined,
-    firstName: 'Murilo',
-    lastName: 'Unten',
-    height: 170,
-    sex: Sex.MALE,
-    dateOfBirth: '29/01/2004',
-}
+// const murilo: User = {
+//     id: undefined,
+//     firstName: 'Murilo',
+//     lastName: 'Unten',
+//     height: 191,
+//     sex: Sex.MALE,
+//     dateOfBirth: '01/01/2000',
+// }
 
 export default function Index() {
     const [users, setUsers] = useState<User[]>([]);
-    const [firstName, onChangeFirstName] = useState<string>("");
-    const [lastName, onChangeLastName] = useState<string>("");
-    const [db, setDB] = useState<Storage>();
+    // const [firstName, onChangeFirstName] = useState<string>("");
+    // const [lastName, onChangeLastName] = useState<string>("");
+    const [loadingDB, setLoadingDB] = useState<boolean>(true);
+    let db: Storage;
+    Storage.getInstance(false)
+        .then((result) => {
+            setLoadingDB(false)
+            db = result;
+        });
 
-    useEffect(() => {
-        loadDatabase(false)
-            .then((storage: Storage) => {
-                setDB(storage)
-            })
-            .catch((e) => console.error(e));
-    }, []);
-
-    if (!db) {
+    const Users = (): any => {
+        const usersJSX:any[] = [];
+        users.forEach((user: User) => {
+            usersJSX.push(UserTestComponent({user}))
+        });
         return (
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            >
-                <Text>Loading Database</Text>
+            <View>
+            { usersJSX }
             </View>
         );
     }
 
+    if (loadingDB) {
+        return (
+            <ScrollView
+            contentContainerStyle={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
+                <Text>Loading Database</Text>
+            </ScrollView>
+        );
+    }
+
     return (
-        <View
-        style={{
+        <ScrollView
+        contentContainerStyle={{
             flex: 1,
-            justifyContent: "center",
+            // justifyContent: "center",
             alignItems: "center",
-        }}
-        >
+        }}>
             <Text>Database loaded</Text>
             <Button title="Get Users" onPress={ async () => setUsers(await db.getUsers()) }/>
 
             <CreateUser />
 
-            <UserTestComponent user={ murilo }></UserTestComponent>
-        </View>
+            
+            {/*
+                <UserTestComponent user={ murilo }></UserTestComponent>
+            */}
+            <Users />
+        </ScrollView>
     );
 }
