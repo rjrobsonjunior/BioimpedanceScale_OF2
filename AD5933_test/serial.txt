@@ -1,0 +1,300 @@
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 249
+Data Addr: 150data: 0
+Data Addr: 151data: 3
+Real: -7 Imag: 3
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 235
+Data Addr: 149data: 211
+Data Addr: 150data: 20
+Data Addr: 151data: 64
+Real: -5165 Imag: 5184
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 253
+Data Addr: 150data: 0
+Data Addr: 151data: 0
+Real: -3 Imag: 0
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 245
+Data Addr: 149data: 208
+Data Addr: 150data: 9
+Data Addr: 151data: 8
+Real: -2608 Imag: 2312
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 255
+Data Addr: 150data: 255
+Data Addr: 151data: 251
+Real: -1 Imag: -5
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 235
+Data Addr: 149data: 186
+Data Addr: 150data: 18
+Data Addr: 151data: 148
+Real: -5190 Imag: 4756
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 253
+Data Addr: 149data: 218
+Data Addr: 150data: 1
+Data Addr: 151data: 162
+Real: -550 Imag: 418
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 231
+Data Addr: 149data: 217
+Data Addr: 150data: 21
+Data Addr: 151data: 155
+Real: -6183 Imag: 5531
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 244
+Data Addr: 149data: 55
+Data Addr: 150data: 9
+Data Addr: 151data: 141
+Real: -3017 Imag: 2445
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 232
+Data Addr: 149data: 188
+Data Addr: 150data: 19
+Data Addr: 151data: 110
+Real: -5956 Imag: 4974
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 234
+Data Addr: 149data: 155
+Data Addr: 150data: 17
+Data Addr: 151data: 35
+Real: -5477 Imag: 4387
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 250
+Data Addr: 149data: 161
+Data Addr: 150data: 3
+Data Addr: 151data: 217
+Real: -1375 Imag: 985
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 230
+Data Addr: 149data: 174
+Data Addr: 150data: 20
+Data Addr: 151data: 67
+Real: -6482 Imag: 5187
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 251
+Data Addr: 150data: 255
+Data Addr: 151data: 254
+Real: -5 Imag: -2
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 230
+Data Addr: 149data: 104
+Data Addr: 150data: 19
+Data Addr: 151data: 162
+Real: -6552 Imag: 5026
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 253
+Data Addr: 150data: 0
+Data Addr: 151data: 2
+Real: -3 Imag: 2
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 238
+Data Addr: 149data: 231
+Data Addr: 150data: 11
+Data Addr: 151data: 193
+Real: -4377 Imag: 3009
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 250
+Data Addr: 150data: 255
+Data Addr: 151data: 253
+Real: -6 Imag: -3
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 239
+Data Addr: 149data: 251
+Data Addr: 150data: 10
+Data Addr: 151data: 91
+Real: -4101 Imag: 2651
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 251
+Data Addr: 150data: 255
+Data Addr: 151data: 255
+Real: -5 Imag: -1
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 230
+Data Addr: 149data: 241
+Data Addr: 150data: 16
+Data Addr: 151data: 128
+Real: -6415 Imag: 4224
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 138
+Data Addr: 150data: 0
+Data Addr: 151data: 50
+Real: -118 Imag: 50
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 228
+Data Addr: 149data: 212
+Data Addr: 150data: 17
+Data Addr: 151data: 87
+Real: -6956 Imag: 4439
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 248
+Data Addr: 149data: 35
+Data Addr: 150data: 4
+Data Addr: 151data: 66
+Real: -2013 Imag: 1090
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 229
+Data Addr: 149data: 166
+Data Addr: 150data: 15
+Data Addr: 151data: 75
+Real: -6746 Imag: 3915
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 237
+Data Addr: 149data: 69
+Data Addr: 150data: 10
+Data Addr: 151data: 79
+Real: -4795 Imag: 2639
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 249
+Data Addr: 149data: 128
+Data Addr: 150data: 3
+Data Addr: 151data: 61
+Real: -1664 Imag: 829
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 227
+Data Addr: 149data: 254
+Data Addr: 150data: 15
+Data Addr: 151data: 138
+Real: -7170 Imag: 3978
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 82
+Flag: 2
+Data Addr: 148data: 255
+Data Addr: 149data: 235
+Data Addr: 150data: 255
+Data Addr: 151data: 253
+Real: -21 Imag: -3
+Data Addr: 143data: 82
+Data Addr: 128data: 49
+Data Addr: 143data: 80
+Data Addr: 143data: 86
+Flag: 2
+Data Addr: 148data: 227
+Data Addr: 149data: 172
+Data Addr: 150data: 15
+Data Addr: 151data: 52
+Real: -7252 Imag: 3892
+Data Addr: 143data: 86
+Data Addr: 143data: 86
+Data Addr: 128data: 49
