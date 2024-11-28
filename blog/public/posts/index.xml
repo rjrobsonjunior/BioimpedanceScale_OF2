@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Balança de Bioimpedância</title>
-    <link>https://bioimpedance-scale.vercel.app/posts/</link>
+    <link>https://scale-blog.vercel.app/posts/</link>
     <description>Recent content in Posts on Balança de Bioimpedância</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 22 Sep 2024 01:38:28 -0300</lastBuildDate>
-    <atom:link href="https://bioimpedance-scale.vercel.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://scale-blog.vercel.app/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog e testes iniciais</title>
-      <link>https://bioimpedance-scale.vercel.app/posts/blog/</link>
+      <link>https://scale-blog.vercel.app/posts/blog/</link>
       <pubDate>Sun, 22 Sep 2024 01:38:28 -0300</pubDate>
-      <guid>https://bioimpedance-scale.vercel.app/posts/blog/</guid>
+      <guid>https://scale-blog.vercel.app/posts/blog/</guid>
       <description>&lt;p&gt;Esta semana foi dedicada à criação do blog para o entregável do dia 06/11/2024.&#xA;Como o AD5933 ainda não chegou, ainda não pôde ser testado.&#xA;Ademais, está sendo analisada a viabilidade de reutilizar a estrutura de uma balança comum já pronta.&lt;/p&gt;</description>
     </item>
   </channel>
