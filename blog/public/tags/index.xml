@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Balança de Bioimpedância</title>
-    <link>https://scale-blog.vercel.app/tags/</link>
+    <link>https://bioimpedance-scale.vercel.app/tags/</link>
     <description>Recent content in Tags on Balança de Bioimpedância</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://scale-blog.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioimpedance-scale.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
