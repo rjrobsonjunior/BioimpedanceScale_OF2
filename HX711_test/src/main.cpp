@@ -7,7 +7,7 @@
 void blinkLED(int time) {
   digitalWrite(LED_PIN, HIGH); 
   delay(time);            
-  digitalWrite(LED_PIN, LOW);   
+  digitalWrite(LED_PIN, LOW);  
   delay(time);            
 }
 
