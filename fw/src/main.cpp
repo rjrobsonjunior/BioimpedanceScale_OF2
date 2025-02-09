@@ -2,7 +2,51 @@
 #include <stdint.h>
 #include "../lib/weight/weight.h"
 #include "../lib/ble/ble.h"
+#include "../lib/impedance/impedance.h"
 
+
+void setup() {
+    Serial.begin(9600);
+    hx711_setup(); 
+    ble_setup(); 
+    impedance_setup();  
+}
+
+void loop() {
+
+    String received = ble_get_last_received();
+    if (received != "") {
+        Serial.print("Processando mensagem recebida: ");
+        Serial.println(received);
+        if (received == "start") {
+            Serial.println("Lendo peso...");
+            float peso = 0.0;
+            for (int i = 0; i < 10; i++) {
+                peso += hx711_get_weight();
+                delay(100);
+            }
+            peso /= 10;
+            //ble_send("Peso: " + String(peso) + " kg");
+            //--------------------------------------
+            Serial.println("Lendo impedancia...");
+            STATES resultado = impedance_runSweep();
+            if (resultado == SENDING_RESULTS) {
+                Serial.print("Impedancia em 50 kHz: ");
+                Serial.print(impedance_50khz);
+                Serial.println(" Ohms");
+                Serial.print("Impedancia em 100 kHz: ");
+                Serial.print(impedance_100khz);
+                Serial.println(" Ohms");
+            } else {
+                Serial.println("Erro na medicao de impedancia.");
+            }
+            ble_send("P: " + String(peso) + " , I: " + String(impedance_100khz));
+        }
+    }
+    Serial.println("FIM.");
+    delay(10000);  
+    delay(500);
+}
 /*
 void setup() {
     Serial.begin(9600);
@@ -16,7 +60,35 @@ void loop() {
     delay(1000);
 }
 */
+/*
+void setup() {
+    Serial.begin(9600);
+    impedance_setup();  // Inicializa o sensor de impedância
+}
 
+void loop() {
+    Serial.println("Iniciando medição de impedância...");
+    
+    // Executa a varredura de impedância
+    STATES resultado = impedance_runSweep();
+    
+    // Exibe os resultados se a medição foi bem-sucedida
+    if (resultado == SENDING_RESULTS) {
+        Serial.print("Impedância em 50 kHz: ");
+        Serial.print(impedance_50khz);
+        Serial.println(" Ohms");
+
+        Serial.print("Impedância em 100 kHz: ");
+        Serial.print(impedance_100khz);
+        Serial.println(" Ohms");
+    } else {
+        Serial.println("Erro na medição de impedância.");
+    }
+
+    delay(1000);  // Aguarda 1 segundo antes da próxima medição
+}
+*/
+/*
 void setup() {
     Serial.begin(9600); // Inicializa a comunicação serial
     hx711_setup(); // Configura o HX711
@@ -24,7 +96,7 @@ void setup() {
 }
 
 void loop() {
-  
+
     String received = ble_get_last_received();
     if (received != "") {
         Serial.print("Processando mensagem recebida: ");
@@ -41,5 +113,6 @@ void loop() {
         }
     }
 
-    delay(500);  // Pequeno delay para evitar sobrecarga da CPU
+    delay(500);  
 }
+*/
