@@ -1,8 +1,10 @@
 #include "ble.h"
 
 BLEServer *pServer = nullptr;
-BLECharacteristic *pCharacteristic = nullptr;
+BLECharacteristic *pCharacteristicTX = nullptr; // Para enviar dados (TX)
+BLECharacteristic *pCharacteristicRX = nullptr; // Para receber dados (RX)
 bool deviceConnected = false;
+String lastReceivedData = "";  // Variável para armazenar a última mensagem recebida
 
 // Classe para manipular conexões BLE
 class MyServerCallbacks : public BLEServerCallbacks {
@@ -14,6 +16,18 @@ class MyServerCallbacks : public BLEServerCallbacks {
   }
 };
 
+// Callback para receber mensagens via BLE
+class MyCharacteristicCallbacks : public BLECharacteristicCallbacks {
+  void onWrite(BLECharacteristic *pCharacteristic) override {
+    String receivedData = pCharacteristic->getValue().c_str();
+    Serial.print("Mensagem recebida: ");
+    Serial.println(receivedData);
+
+    // Atualiza a variável global com a última mensagem recebida
+    lastReceivedData = receivedData;
+  }
+};
+
 // Função para inicializar o Bluetooth
 void ble_setup() {
   BLEDevice::init("ESP32");
@@ -21,10 +35,20 @@ void ble_setup() {
   pServer->setCallbacks(new MyServerCallbacks());
 
   BLEService *pService = pServer->createService(SERVICE_UUID);
-  pCharacteristic = pService->createCharacteristic(
-                      CHARACTERISTIC_UUID,
-                      BLECharacteristic::PROPERTY_NOTIFY
-                    );
+
+  // Característica para enviar dados (TX)
+  pCharacteristicTX = pService->createCharacteristic(
+                          CHARACTERISTIC_UUID_TX,
+                          BLECharacteristic::PROPERTY_NOTIFY
+                      );
+  pCharacteristicTX->addDescriptor(new BLE2902());
+
+  // Característica para receber dados (RX)
+  pCharacteristicRX = pService->createCharacteristic(
+                          CHARACTERISTIC_UUID_RX,
+                          BLECharacteristic::PROPERTY_WRITE
+                      );
+  pCharacteristicRX->setCallbacks(new MyCharacteristicCallbacks());
 
   pService->start();
 
@@ -36,7 +60,14 @@ void ble_setup() {
 // Função para enviar dados via Bluetooth
 void ble_send(String data) {
   if (deviceConnected) {
-    pCharacteristic->setValue(data.c_str());
-    pCharacteristic->notify();
+    pCharacteristicTX->setValue(data.c_str());
+    pCharacteristicTX->notify();
   }
+}
+
+// **Função para obter a última mensagem recebida**
+String ble_get_last_received() {
+  String temp = lastReceivedData;  // Copia o valor para evitar alterações concorrentes
+  lastReceivedData = "";  // Limpa a variável após a leitura
+  return temp;
 }
