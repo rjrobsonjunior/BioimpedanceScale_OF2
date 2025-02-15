@@ -43,5 +43,7 @@ byte impedance_getFrequency(float freq, int n);
 extern STATES actual_state;
 extern double impedance_50khz;
 extern double impedance_100khz;
+extern const double gain_factor_100khz;
+extern double mag;
 
 #endif

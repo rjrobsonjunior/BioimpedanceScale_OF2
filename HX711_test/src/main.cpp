@@ -30,7 +30,7 @@ const int WAIT_TIME = 500;
 
 HX711 scale; 
 
-float calibration = 25440; //tested 18/11
+float calibration = 19440; //tested 18/11
 
 char cmd;
 

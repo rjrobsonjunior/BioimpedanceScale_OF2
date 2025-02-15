@@ -2,17 +2,17 @@
 
 const float MCLK = 16.776 * pow(10, 6); // AD5933 Internal Clock Speed 16.776 MHz
 const float startfreq = 50 * pow(10, 3); // Frequência inicial de 50 kHz
-const float increfreq = 1 * pow(10, 3); // Incremento de frequência de 1 kHz
-const int increnum = 50; // Número de incrementos
+const float increfreq = 25 * pow(10, 3); // Incremento de frequência de 1 kHz
+const int increnum = 2; // Número de incrementos
 
 // Fatores de ganho calculados para frequências específicas
-const double gain_factor_50khz  = 0.0894676; // Gain Factor at 50 kHz  Known Impedance: ~1 kOhm (985 Ohm)
-const double gain_factor_100khz = 0.09138455; // Gain Factor at 100 kHz  Known Impedance: ~1 kOhm (985 Ohm)
-
+const double gain_factor_50khz  = 8.043 * pow(10, -7); // Gain Factor at 50 kHz | Known Impedance: ~0,5 kOhm (584,4 Ohm)
+//12/02 const double gain_factor_100khz = 1.33 * pow(10, -6);  // Gain Factor at 100 kHz | Known Impedance: ~0,5 kOhm (
+const double gain_factor_100khz = 3.79 * pow(10, -7);
 // Variáveis globais de impedância
 double impedance_50khz;
 double impedance_100khz;
-
+double mag;
 // Estado atual da máquina de estados
 STATES actual_state = MEASURING;
 
@@ -50,9 +50,9 @@ void impedance_programReg() {
 }
 
 STATES impedance_runSweep() {
-  short re, img;
+  int16_t re, img;
   float freq;
-  double mag;
+
   int i = 0;
 
   impedance_50khz = 0;
@@ -83,10 +83,12 @@ STATES impedance_runSweep() {
       freq = startfreq + i * increfreq;
       mag = sqrt(pow(double(re), 2) + pow(double(img), 2));
 
+      /*
       if (freq / 1000 == 50) {
         impedance_50khz = gain_factor_50khz * mag;
       }
-
+      */
+     
       if (freq / 1000 == 100) {
         impedance_100khz = gain_factor_100khz * mag;
       }
@@ -124,8 +126,8 @@ int impedance_readData(int addr) {
     data = Wire.read();
   }
 
-  Serial.print("Data Addr: "); Serial.print(addr);
-  Serial.print(" Data: "); Serial.println(data);
+  //Serial.print("Data Addr: "); Serial.print(addr);
+  //Serial.print(" Data: "); Serial.println(data);
   delay(1);
   return data;
 }

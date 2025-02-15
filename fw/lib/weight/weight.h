@@ -7,7 +7,8 @@
 // Definição dos pinos do HX711
 #define PIN_DT 12
 #define PIN_SCK 13
-#define CALIBRATION 25440.0
+//#define CALIBRATION 25440.0
+#define CALIBRATION 19440.0
 
 // Declaração da variável do HX711
 extern HX711 scale;
