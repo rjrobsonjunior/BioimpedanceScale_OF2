@@ -13,7 +13,7 @@ void setup() {
 }
 
 void loop() {
-    double
+    double impFinal = 0;
     String received = ble_get_last_received();
     if (received != "") {
         
