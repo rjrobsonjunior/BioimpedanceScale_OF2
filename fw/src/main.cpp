@@ -1,4 +1,4 @@
-#include <BluetoothSerial.h>
+#include <BluetoothSeridal.h>
 #include <Wire.h>
 #include "HX711.h"
 

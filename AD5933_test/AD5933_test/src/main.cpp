@@ -42,8 +42,17 @@ const float MCLK = 16.776 * pow(10, 6); // AD5933 Internal Clock Speed 16.776 MH
 const float startfreq = 50 * pow(10, 3); // Frequency Start
 const float increfreq = 1 * pow(10, 3); // Frequency Increment
 const int increnum = 50; // Number of increments
-const double gain_factor_50khz  = 0.0894676; // Gain Factor at 50 kHz | Known Impedance: ~1 kOhm (985 Ohm)
-const double gain_factor_100khz = 0.09138455; // Gain Factor at 100 kHz | Known Impedance: ~1 kOhm (985 Ohm)
+
+//sem circuito auxiliar
+//const double gain_factor_50khz  = 2.043 * pow(10, -7); // Gain Factor at 50 kHz | Known Impedance: ~1 kOhm (981 Ohm)
+//const double gain_factor_100khz = 2.044 * pow(10, -7);  // Gain Factor at 100 kHz | Known Impedance: ~1 kOhm (981 Ohm)
+//com circuito auxiliar
+//const double gain_factor_50khz  = 6.277 * pow(10, -7); // Gain Factor at 50 kHz | Known Impedance: ~1 kOhm (981 Ohm)
+//const double gain_factor_100khz = 6.275 * pow(10, -7);  // Gain Factor at 100 kHz | Known Impedance: ~1 kOhm (981 Ohm)
+//com circuito auxiliar 500ohm
+const double gain_factor_50khz  = 8.043 * pow(10, -7); // Gain Factor at 50 kHz | Known Impedance: ~0,5 kOhm (584,4 Ohm)
+const double gain_factor_100khz = 1.33 * pow(10, -6);  // Gain Factor at 100 kHz | Known Impedance: ~0,5 kOhm (584,4 Ohm)
+
 
 // Impedance values
 double impedance_50khz;
@@ -104,8 +113,8 @@ void programReg() {
 }
 
 STATES runSweep() {
-  short re;
-  short img;
+  int16_t re;
+  int16_t img;
   float freq;
   double mag;
   int i = 0;
@@ -126,7 +135,7 @@ STATES runSweep() {
     delay(100); // Delay between measurements
     
     int flag = readData(STATUSREG) & 2;
-    Serial.print("Flag: "); Serial.println(flag);
+    //Serial.print("Flag: "); Serial.println(flag);
     if (flag == 2) {
       byte R1 = readData(REDATA_R1);
       byte R2 = readData(REDATA_R2);
@@ -134,19 +143,52 @@ STATES runSweep() {
       R1 = readData(IMGDATA_R1);
       R2 = readData(IMGDATA_R2);
       img = (R1 << 8) | R2;
-      Serial.print("Real: "); Serial.print(re);
-      Serial.print(" Imag: "); Serial.println(img);
+      // if(freq == 1000 || freq == 50000 || freq == 100000)
+      // {
+      //   Serial.print("Real: "); Serial.print(re);
+      //   Serial.print(" Imag: "); Serial.println(img);
+      // }
 
       freq = startfreq + i * increfreq;
 
-      mag = sqrt(pow(double(re), 2) + pow(double(img), 2));
+      
 
       if (freq / 1000 == 50) { //50 kHz
-        impedance_50khz = gain_factor_50khz * mag;
+        mag = sqrt(pow(double(re), 2) + pow(double(img), 2));
+        impedance_50khz = 1/(gain_factor_50khz * mag);
+        //Serial.print("freq: "); Serial.print(freq);
+        //Serial.print("Real: "); Serial.print(re);
+        //Serial.print(" Imag: "); Serial.println(img);
+        //Serial.print(" Mag: "); Serial.println(mag);
+        //Serial.print(" imp 50k "); Serial.println(impedance_50khz);
       }
+      int altura_cm = 183;
+      int peso_kg = 73;
+      int idade_anos = 22;
+      bool is_homem =  true;
+
 
       if (freq / 1000 == 100) { //100 kHz
-        impedance_100khz = gain_factor_100khz * mag;
+        float FM;
+        float FFM;
+        float TBW;
+        impedance_100khz = 1 / (gain_factor_100khz * mag);
+        TBW = 6.69 + (0.34573 * (pow(altura_cm, 2) / impedance_100khz)) + (0.17065 * peso_kg) - (0.11 * idade_anos) + (2.66 * is_homem);
+        FFM = TBW / 0.73;
+        FM = peso_kg - FFM;
+
+        FM = abs(FM);
+        FFM = abs(FFM);
+        TBW = abs(TBW);
+        
+        Serial.print("Freq: "); Serial.print(freq);
+        Serial.print("Real: "); Serial.print(re);
+        Serial.print(" Imag: "); Serial.println(img);
+        Serial.print(" Mag: "); Serial.println(mag);
+        Serial.print(" imp 100k: "); Serial.println(impedance_100khz);
+        Serial.print("TBW"); Serial.println(TBW);
+        Serial.print("FM:"); Serial.println(FM);
+        Serial.print("FFM"); Serial.println(FFM);
       }
 
       // Increment frequency
@@ -160,9 +202,11 @@ STATES runSweep() {
   writeData(CTRLREG, (readData(CTRLREG) & 0x07) | 0xA0); // Power down
 
   if (impedance_100khz != 0) {
-    return SENDING_RESULTS;
+    //Serial.print(" imp 100k: "); Serial.println(impedance_100khz);
+    //Serial.print(" imp 50k "); Serial.println(impedance_50khz);
+    return MEASURING;
   }
-  return SENDING_RESULTS;
+  return MEASURING;
 }
 
 void writeData(int addr, int data) 
@@ -188,8 +232,8 @@ int readData(int addr) {
   } else {
     data = -1;
   }
-  Serial.print("Data Addr: "); Serial.print(addr);
-  Serial.print("data: "); Serial.println(data);
+  //Serial.print("Data Addr: "); Serial.print(addr);
+  //Serial.print("data: "); Serial.println(data);
   delay(1);
   return data;
 }
