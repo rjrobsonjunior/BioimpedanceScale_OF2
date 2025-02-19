@@ -31,14 +31,16 @@ void loop() {
             //ble_send("Peso: " + String(peso) + " kg");
             //--------------------------------------
             Serial.println("Lendo impedancia...");
-            for (int i = 0; i < 5; i++) {
+            //for (int i = 0; i < 5; i++) {
                 STATES resultado = impedance_runSweep();
-                impFinal += impedance_100khz;
                 if (resultado == SENDING_RESULTS) {
                     impedance_100khz = 1 / (gain_factor_100khz * mag);
+                    impFinal += impedance_100khz;
                     Serial.print("Impedancia em 100 kHz: ");
                     Serial.print(impedance_100khz);
                     Serial.println(" Ohms");
+                    Serial.println("mag: ");
+                    Serial.println(mag);
                     float FM;
                     float FFM;
                     float TBW;
@@ -60,10 +62,10 @@ void loop() {
                 else {
                 Serial.println("Erro na medicao de impedancia.");
                 }
-            }
-            impFinal /= 5;
+            //}
+            //impFinal /= 5;
             Serial.println("impedancia final: " + String(impFinal));
-            ble_send("{'m':" + String(peso) + ", 'Z':"+ String(impFinal) + "}");
+            ble_send("{\"m\":\"" + String(peso) + "\", \"Z\":\""+ String(impFinal) + "\"}");
         }
     }
     Serial.println("FIM.");

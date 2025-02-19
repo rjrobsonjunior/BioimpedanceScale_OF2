@@ -2,13 +2,15 @@
 
 const float MCLK = 16.776 * pow(10, 6); // AD5933 Internal Clock Speed 16.776 MHz
 const float startfreq = 50 * pow(10, 3); // Frequência inicial de 50 kHz
-const float increfreq = 25 * pow(10, 3); // Incremento de frequência de 1 kHz
-const int increnum = 2; // Número de incrementos
+const float increfreq = 50 * pow(10, 3); // Incremento de frequência de 1 kHz
+const int increnum = 1; // Número de incrementos
 
 // Fatores de ganho calculados para frequências específicas
 const double gain_factor_50khz  = 8.043 * pow(10, -7); // Gain Factor at 50 kHz | Known Impedance: ~0,5 kOhm (584,4 Ohm)
-//12/02 const double gain_factor_100khz = 1.33 * pow(10, -6);  // Gain Factor at 100 kHz | Known Impedance: ~0,5 kOhm (
-const double gain_factor_100khz = 3.79 * pow(10, -7);
+//const double gain_factor_100khz = 1.33 * pow(10, -6); //12/02   
+//const double gain_factor_100khz = 3.79 * pow(10, -7) //15/02 
+const double gain_factor_100khz = 1.121 * pow(10, -6);
+
 // Variáveis globais de impedância
 double impedance_50khz;
 double impedance_100khz;
